@@ -1,4 +1,4 @@
-package aux3.problem.user
+package user
 
 trait IUser {
   def name: String

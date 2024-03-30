@@ -1,6 +1,6 @@
-package aux3.problem.social
+package social
 
-import aux3.solution.user.IUser
+import user.IUser
 
 trait ISocialY {
 
