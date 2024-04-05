@@ -1,0 +1,35 @@
+Index: src/test/scala/user/AdminTest.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package aux3.solution.user\r\nimport munit.FunSuite\r\n\r\nclass AdminTest extends FunSuite{\r\n  var u1:User = _\r\n  var u2:User = _\r\n  var a1:Admin= _\r\n\r\n  override def beforeEach(context:BeforeEach):Unit={\r\n    u1 = new User(\"operagyofficial\", \"browserforgamers\", \"Opera GY\")\r\n    u2 = new User(\"user123\", \"12356\")\r\n    a1 = new Admin(\"Duo\",\"doYourSpanishLessons\",\"DuolingoBros\")\r\n  }\r\n\r\n  test(\"The admin has a username\") {\r\n    val expectedUsername: String = \"DuolingoBros\"\r\n    assertEquals(a1.name, expected)\r\n  }\r\n  test(\"The admin has a password\") {\r\n    val expectedPassword: String = \"DuolingoBros\"\r\n    assertEquals(a1.name, expected)\r\n  }\r\n\r\n  test(\"The admin has a name\") {\r\n    val expectedName: String = \"DuolingoBros\"\r\n    assertEquals(a1.name, expected)\r\n  }\r\n  test(\"An admin can ban any user\"){\r\n    a1.banUser(u1)\r\n    val expected:String=\"Banned\"\r\n    assertEquals(u1.state,expected)\r\n  }\r\n  test(\"An admin can mute any user\"){\r\n    a1.muteUser(u2)\r\n    val expected:String=\"Muted\"\r\n    assertEquals(u2.state,expected)\r\n  }\r\n  test(\"An admin can unmute or unban an user\") {\r\n    a1.muteUser(u1)\r\n    a1.banUser(u2)\r\n    assertEquals(u1.state,\"Muted\")\r\n    assertEquals(u2.state,\"Banned\")\r\n    a1.removeRestrictions(u1)\r\n    a1.removeRestrictions(u2)\r\n    assertEquals(u1.state, \"\")\r\n    assertEquals(u2.state, \"\")\r\n  }\r\n}\r\n
+===================================================================
+diff --git a/src/test/scala/user/AdminTest.scala b/src/test/scala/user/AdminTest.scala
+--- a/src/test/scala/user/AdminTest.scala	
++++ b/src/test/scala/user/AdminTest.scala	
+@@ -1,5 +1,6 @@
+ package aux3.solution.user
+ import munit.FunSuite
++import user.Admin
+ 
+ class AdminTest extends FunSuite{
+   var u1:User = _
+@@ -14,16 +15,16 @@
+ 
+   test("The admin has a username") {
+     val expectedUsername: String = "DuolingoBros"
+-    assertEquals(a1.name, expected)
++    assertEquals(a1.name, expectedUsername)
+   }
+   test("The admin has a password") {
+     val expectedPassword: String = "DuolingoBros"
+-    assertEquals(a1.name, expected)
++    assertEquals(a1.name, expectedPassword)
+   }
+ 
+   test("The admin has a name") {
+     val expectedName: String = "DuolingoBros"
+-    assertEquals(a1.name, expected)
++    assertEquals(a1.name, expectedName)
+   }
+   test("An admin can ban any user"){
+     a1.banUser(u1)

@@ -9,13 +9,14 @@ si no sabe donde esta siempre puede hacer `pwd` para que muestre el directorio e
 
 Para clonar el repositorio haga (una vez ubicado en la carpeta destino):
 ```bash
-git clone https://github.com/dcc-cc3002/2023-2-practice-aux-codes.git
+git clone https://github.com/dcc-cc3002/auxiliar3-2024-1.git
 ```
 
 Esto creará una carpeta nueva llamada '2023-2-practice-aux-codes', puede encontrarla usando `ls` (o `dir` si esta en Windows), para entrar en
 la repo haga `cd`:
+
 ```bash
-cd 2023-2-practice-aux-codes
+cd auxiliar3-2024-1.git
 ```
 
 Hay ya estará dentro del proyecto de git:
@@ -59,10 +60,10 @@ Para ello debe guiarse de los siguientes requisitos:
 ### Contexto
 Al señor Alon (el dueño) parece gustarle su manera de trabajar, asi que como regalo le asigno más trabajo!
 
-Ahora debe crear la clase `User` que representa un usuario dentro de la red social “Y”, para ello esta vez SI haga que este implemente el trait `IUser`.
+Ahora debe crear la clase `User` que representa un usuario dentro de la red social “Y”
 
 ### Indicaciones
-Al extender un trait, la clase debe si o si implementar ciertas funcionalidades. Son justamente estas las que usted tiene que testear primero y luego implementar, de manera similar, debe crear la clas `UserTest` primero y hay hacer testing.
+Debe crear la clas `UserTest` primero y hay hacer testing.
 
 #### Consideraciones
 Los requisitos son los siguientes:
@@ -78,20 +79,26 @@ Los requisitos son los siguientes:
 
 ***Hint: Puede usar la clase Set de Scala para guardar los seguidores y seguidos de manera única***
 
-## Pt 4: Refactoring
+## Pt 4: Admin
 ### Contexto
-Un trabajo simplemente impecable, todos en la empresa están maravillados con usted, solo falta la última patita: Arreglar `SocialY`.
+Un trabajo simplemente impecable, todos en la empresa están maravillados con usted, pero dado el reciente nuevo publico hay demasiados usuarios mal portados
 
-Ahora que tiene `IUser` bien implementado, arregle `SocialY`, haciendo que implemente el trait `ISocialY`, si se fija las únicas diferencias es que ahora deben retornar un `Option[IUser]`.
+Para lo cual su querido jefe le asigna su última tarea añadir usuarios Admin.
 
-### Indicaciones
-Extienda "a la mala" `Social` usando `ISocialY`, cambiando el valor de retorno correspondiente. Recuerde que la gracia de `Option` es que puede retornar `None` o `Some`, es decir, nulo o algo. Si se fija el método `get` de un `Map` usa justamente esto puesto que la llave puede o no estar en el diccionario.
+#### Consideraciones
 
-Para este caso `login` funciona de manera muy similar: buscando un `User` en el `Map` y retornandolo con las debidas precauciones. Para el caso del `register` se debe crear el `User` dentro del método y agregarlo a la memoria, luego retornar, de nuevo, con las debidas precauciones.
+Los requisitos son los siguientes:
 
+- -Un admin debe de poder establecer el estado de un usuario a “Muted” o “Banned”
+
+  -Un admin debe de poder quitar cualquiera de la restricciones impuestas a un usuario
+
+  -Un admin también tiene username y password
+
+  -Los administradores no se deberían poder cambiar el estado entre ellos
 
 ***Hint:
- En los tests en vez de usar el retorno de las funciones (true or false) use el método isDefined de Option.***
+ Piense en el funcionamiento de login y register ahora que hay un nuevo tipo de usuario***
 
 
 
