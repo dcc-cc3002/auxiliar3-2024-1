@@ -13,4 +13,9 @@ class Admin(val username: String, password: String, var name: String) extends IU
 
   def removeRestrictions(user:User):Unit=user.removeRestrictions()
 
+  def unfollowedBy(user: IUser): Unit = {
+  }
+
+  def followedBy(user: IUser): Unit = {
+  }
 }
